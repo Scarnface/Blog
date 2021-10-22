@@ -44,4 +44,15 @@ class Post {
   {
     return static::all()->firstwhere('slug', $slug);
   }
+
+  public static function findOrFail($slug) 
+  {
+    $post = static::find($slug);
+
+    if(! $post) {
+      throw new ModelNotFoundException();
+    }
+
+    return $post;
+  }
 }
