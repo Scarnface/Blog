@@ -15,7 +15,7 @@
         </a>
       </p>
 
-      <div>{{ $post->excerpt; }}</div>
+      <div>{!! $post->excerpt; !!}</div>
 
     </article>
   @endforeach
