@@ -17,7 +17,7 @@
 
             <div class="mt-8 md:mt-0 flex items-center">
                 @auth
-                    <span class="text-xs font-bold">Welcome, {{ auth()->user()->name }}!</span>
+                    <span class="text-xs font-bold">Logged in as: {{ auth()->user()->name }}!</span>
 
                     <form action="/logout" 
                       method="post"
