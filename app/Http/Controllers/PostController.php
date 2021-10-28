@@ -9,7 +9,10 @@ class PostController extends Controller
     public function index() 
     {
       return view('posts.index', [
-        'posts' => Post::latest()->with('category', 'author')->filter(request(['search', 'category', 'author']))->get()
+        'posts' => Post::latest()
+          ->with('category', 'author')
+          ->filter(request(['search', 'category', 'author']))
+          ->paginate(6)
       ]);
     }
 
