@@ -17,12 +17,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::factory()->create([
-          'name' => 'Scarnface'
-        ]);
+        // SINGLE USER TEST SEEDING
+        //
+        // $user = User::factory()->create([
+        //   'name' => 'Scarnface'
+        // ]);
 
-        Post::factory(5)->create([
-          'user_id' => $user->id
-        ]);
+        // Post::factory(5)->create([
+        //   'user_id' => $user->id
+        // ]);
+
+        Post::factory(30)->create();
     }
 }
