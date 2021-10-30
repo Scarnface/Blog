@@ -6,33 +6,32 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
 {
-    public function create()
-    {
-      return view('sessions.create');
+  public function create()
+  {
+    return view('sessions.create');
+  }
+
+  public function store()
+  {
+    $attributes = request()->validate([
+      'email' => ['required', 'email'],
+      'password' => ['required']
+    ]);
+
+    if (Auth::attempt($attributes)) {
+      session()->regenerate();
+      return redirect('/')->with('success', 'Welcome!');
     }
 
-    public function store()
-    {
-      $attributes = request()->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required']
-      ]);
+    return back()
+      ->withInput()
+      ->withErrors(['email' => 'Your credentials could not be verified.']);
+  }
 
-      if (Auth::attempt($attributes))
-      {
-        session()->regenerate();
-        return redirect('/')->with('success', 'Welcome!');
-      }
+  public function destroy()
+  {
+    Auth::logout();
 
-      return back()
-        ->withInput()
-        ->withErrors(['email' => 'Your credentials could not be verified.']);
-    }
-
-    public function destroy()
-    {
-      Auth::logout();
-
-      return redirect('/')->with('success', 'Goodbye!');
-    }
+    return redirect('/')->with('success', 'Goodbye!');
+  }
 }
