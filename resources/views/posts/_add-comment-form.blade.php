@@ -23,10 +23,7 @@
       </div>
 
       <div class="flex justify-end mt-6">
-        <button type="submit"
-                class="bg-blue-500 hover:bg-blue-600 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5"
-        >Post
-        </button>
+        <x-form.button>Post</x-form.button>
       </div>
     </form>
   </x-panel>
