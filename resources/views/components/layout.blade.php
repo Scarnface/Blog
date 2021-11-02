@@ -23,15 +23,23 @@
 
       <div class="mt-8 md:mt-0 flex items-center">
         @auth
-          <span class="text-xs font-bold">Logged in as: {{ auth()->user()->name }}!</span>
+          <x-dropdown>
+            <x-slot name="trigger">
+              <button class="text-md font-bold pl-10 pr-10">MENU</button>
+            </x-slot>
 
-          <form action="{{ url('/logout') }}"
-                method="post"
-                class="text-xs font-bold text-blue-500 ml-3"
-          >
-            @csrf
-            <button type="submit">Log Out</button>
-          </form>
+            <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Logout</x-dropdown-item>
+            <x-dropdown-item href="{{ url('/admin/posts/create') }}">New Post</x-dropdown-item>
+
+            <form id="logout-form"
+                  action="{{ url('/logout') }}"
+                  method="post"
+                  class="hidden"
+            >
+              @csrf
+            </form>
+          </x-dropdown>
+
         @else
           <a href="{{ url('/login') }}" class="text-xs font-bold uppercase">Log In</a>
           <a href="{{ url('/register') }}" class="text-xs font-bold uppercase ml-3">Register</a>

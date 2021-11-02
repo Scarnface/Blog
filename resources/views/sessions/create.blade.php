@@ -13,7 +13,7 @@
 
         <x-form.field>
           <x-form.button>Login</x-form.button>
-        </x-form.field>>
+        </x-form.field>
 
         @if ($errors->any())
           <ul>
