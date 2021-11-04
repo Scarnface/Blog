@@ -22,7 +22,6 @@
               >{{ ucwords($category->name) }}</option>
             @endforeach
           </select>
-{{--          test--}}
 
           <x-form.error name="category" />
         </x-form.field>
